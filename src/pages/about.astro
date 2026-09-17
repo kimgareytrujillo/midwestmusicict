@@ -1,25 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CallToAction from '../components/CallToAction.astro';
+
+const reasons = [
+  'Wide range of musical styles under one roof',
+  'Experienced, professional musicians',
+  'Easy booking and clear pricing',
+  'Flexible for weddings, corporate events, private parties, and more',
+];
 ---
 
-<BaseLayout title="About Kim Trujillo & midwestmusicICT" description="Meet Kim Trujillo, professional percussionist and founder of midwestmusicICT, and the network of Wichita-area musicians she books for live events.">
+<BaseLayout title="About" description="Midwest Music ICT connects you with a network of professional musicians for weddings, corporate events, and private celebrations.">
   <section class="section about-hero">
     <div class="container about-hero__grid">
       <div class="about-hero__photo card">
-        <!-- TODO: replace with a real photo of Kim performing -->
-        <p class="about-hero__photo-placeholder">Photo of Kim coming soon</p>
+        <!-- TODO: replace with a real founder/team photo once available -->
+        <p class="about-hero__photo-placeholder">Photo of Kim Trujillo, Founder, coming soon</p>
       </div>
       <div>
         <p class="eyebrow">About</p>
-        <h1>Kim Trujillo</h1>
+        <h1>About Midwest Music ICT</h1>
         <p class="about-hero__body">
-          <!-- TODO: replace with Kim's real bio once the detail doc arrives -->
-          Kim Trujillo is a professional percussionist based in the Wichita area with years of experience
-          performing at weddings, corporate functions, and private celebrations throughout the region.
-          midwestmusicICT grew out of that experience: a trusted network of local and regional musicians
-          Kim calls on to build the right lineup for every event, from an intimate acoustic duo to a
-          full live band.
+          Midwest Music ICT was built on a simple idea: every event deserves music that fits. We work
+          with a network of skilled, professional musicians across a range of styles, so you&rsquo;re
+          not stuck choosing between &ldquo;the DJ&rdquo; and &ldquo;the band&rdquo; &mdash; you get
+          exactly the sound your event calls for, handled by people who do this for a living.
+        </p>
+        <p class="about-hero__body">
+          From your first inquiry to the final encore, we handle the coordination, so you can focus on
+          your guests instead of logistics.
         </p>
       </div>
     </div>
@@ -27,22 +35,14 @@ import CallToAction from '../components/CallToAction.astro';
 
   <section class="section section--alt">
     <div class="container">
-      <p class="eyebrow">The Musicians</p>
-      <h2>A network built for every occasion</h2>
-      <p class="section-intro">
-        <!-- TODO: expand with real musician bios / instrumentation once provided -->
-        Depending on your event, Kim assembles the right combination of local and regional musicians &mdash;
-        percussion, strings, horns, vocals, and more &mdash; so every performance is tailored to your venue,
-        your guest count, and the mood you want to set.
-      </p>
+      <p class="eyebrow">Why Book With Us</p>
+      <ul class="reasons-list">
+        {reasons.map((reason) => (
+          <li>{reason}</li>
+        ))}
+      </ul>
     </div>
   </section>
-
-  <CallToAction
-    eyebrow="Let's work together"
-    heading="Tell us about your event"
-    body="Share your date and vision and we'll help put together the right musicians for it."
-  />
 </BaseLayout>
 
 <style>
@@ -67,9 +67,14 @@ import CallToAction from '../components/CallToAction.astro';
     font-size: 1.05rem;
   }
 
-  .section-intro {
-    max-width: 70ch;
+  .reasons-list {
+    max-width: 60ch;
     color: var(--color-text-muted);
+    padding-left: 1.2rem;
+  }
+
+  .reasons-list li {
+    margin-bottom: 0.6rem;
   }
 
   @media (max-width: 720px) {

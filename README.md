@@ -1,7 +1,12 @@
-# midwestmusicICT
+# Midwest Music ICT
 
-Website for **midwestmusicICT**, Kim Trujillo's live music booking business based in the Wichita, KS area.
-Built with [Astro](https://astro.build) as a static site.
+Website for **Midwest Music ICT**, Kim Trujillo's live music booking business based in the Wichita, KS
+area. Built with [Astro](https://astro.build) as a static site.
+
+## Pages
+
+Home, About, Music (ensembles), Event Types, Packages & Pricing, Gallery, Contact — see
+`src/pages/` for each.
 
 ## Local development
 
@@ -35,6 +40,5 @@ The domain `midwestmusicict.com` is registered with Cloudflare. To deploy:
 
 ## Content status
 
-Real business content (bio copy, service packages, video/audio links, contact info) is still pending —
-Kim is drafting a detailed content brief with another agent. See `CONTENT_TODO.md` for the current list of
-placeholders to replace once that's ready.
+Site structure and copy follow Kim's content brief. Photos, final pricing, contact info, and a few
+functionality decisions (contact form backend, map embed) are still open — see `CONTENT_TODO.md`.

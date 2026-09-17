@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Repeatable event-type entries — add another object here to add a new event type to the page.
+const eventTypes = [
+  {
+    id: 'weddings',
+    title: 'Weddings',
+    body: 'Ceremony, cocktail hour, reception — we cover every moment of the day. String quartet for the walk down the aisle, jazz combo while guests mingle, and a full band to close out the night on the dance floor.',
+    ensembles: ['String Quartet', 'Jazz Combo', 'Rock Band'],
+    cta: 'See Wedding Packages',
+    href: '/packages/',
+  },
+  {
+    id: 'corporate-events',
+    title: 'Corporate Events',
+    body: 'Galas, conferences, holiday parties, client appreciation events — live music that fits the tone of the room, from background elegance to full entertainment.',
+    ensembles: ['Jazz Combo', 'String Quartet', 'Rock Band'],
+    cta: 'See Corporate Packages',
+    href: '/packages/',
+  },
+  {
+    id: 'private-parties',
+    title: 'Private Parties',
+    body: 'Birthdays, anniversaries, backyard bashes, milestone celebrations — bring the energy with a band built to get people moving.',
+    ensembles: ['Rock Band', 'Steel Drum Band'],
+    cta: 'See Party Packages',
+    href: '/packages/',
+  },
+  {
+    id: 'outdoor-themed-events',
+    title: 'Outdoor & Themed Events',
+    body: 'Beach parties, summer festivals, tropical-themed gatherings — steel drum brings the festive energy that fits an outdoor setting.',
+    ensembles: ['Steel Drum Band'],
+    cta: 'See Packages',
+    href: '/packages/',
+  },
+];
+---
+
+<BaseLayout title="Event Types" description="Midwest Music ICT matches the right live music ensemble to your event — weddings, corporate events, private parties, and outdoor or themed celebrations.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Event Types</p>
+      <h1>Music for Every Kind of Event</h1>
+      <p class="section-intro">
+        No matter what you&rsquo;re planning, we&rsquo;ll match you with the right ensemble and sound.
+        Explore event types below, or contact us if you don&rsquo;t see yours.
+      </p>
+    </div>
+  </section>
+
+  {eventTypes.map((event, i) => (
+    <section id={event.id} class:list={['section', { 'section--alt': i % 2 === 1 }]}>
+      <div class="container event-type-grid">
+        <div class="event-type-photo card">
+          <!-- TODO: replace with a real photo for this event type -->
+          <p>{event.title} photo coming soon</p>
+        </div>
+        <div>
+          <h2>{event.title}</h2>
+          <p class="event-type-body">{event.body}</p>
+          <p class="event-type-ensembles">
+            <strong>Recommended ensembles:</strong> {event.ensembles.join(', ')}
+          </p>
+          <a class="btn btn--secondary" href={event.href}>{event.cta} &rarr;</a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section id="other-events" class="section section--alt other-events">
+    <div class="container other-events__inner">
+      <h2>Other Events</h2>
+      <p>
+        Don&rsquo;t see your event type listed? We work with all kinds of celebrations and gatherings
+        &mdash; reach out and we&rsquo;ll help you find the right fit.
+      </p>
+      <a class="btn btn--primary" href="/contact/">Contact Us &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-intro {
+    max-width: 70ch;
+    color: var(--color-text-muted);
+  }
+
+  .event-type-grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 360px) 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .event-type-photo {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .event-type-body,
+  .event-type-ensembles {
+    color: var(--color-text-muted);
+  }
+
+  .event-type-ensembles strong {
+    color: var(--color-text);
+  }
+
+  .other-events {
+    text-align: center;
+  }
+
+  .other-events__inner {
+    max-width: 560px;
+  }
+
+  @media (max-width: 720px) {
+    .event-type-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

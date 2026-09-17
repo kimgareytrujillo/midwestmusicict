@@ -2,8 +2,10 @@
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/about/', label: 'About' },
-  { href: '/services/', label: 'Services' },
-  { href: '/media/', label: 'Media' },
+  { href: '/music/', label: 'Music' },
+  { href: '/event-types/', label: 'Event Types' },
+  { href: '/packages/', label: 'Packages' },
+  { href: '/gallery/', label: 'Gallery' },
   { href: '/contact/', label: 'Contact' },
 ];
 const currentPath = Astro.url.pathname;
@@ -11,7 +13,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-header__brand" href="/">midwest<span>music</span>ICT</a>
+    <a class="site-header__brand" href="/">Midwest <span>Music</span> ICT</a>
     <nav class="site-header__nav" aria-label="Main navigation">
       {navItems.map((item) => (
         <a

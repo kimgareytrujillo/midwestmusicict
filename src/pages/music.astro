@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// Repeatable ensemble entries — add another object here to add a new ensemble to the page.
+const ensembles = [
+  {
+    id: 'string-quartet',
+    title: 'String Quartet',
+    body: 'Elegant and refined, perfect for wedding ceremonies, cocktail hours, and formal receptions. Classical favorites, modern arrangements, and first-dance songs reimagined for strings.',
+  },
+  {
+    id: 'jazz-combo',
+    title: 'Jazz Combo',
+    body: 'Smooth and sophisticated. Great for dinner parties, corporate mixers, and cocktail hours where you want great music without overpowering conversation.',
+  },
+  {
+    id: 'steel-drum-band',
+    title: 'Steel Drum Band',
+    body: 'Bright, upbeat, and festive — ideal for outdoor events, summer parties, and tropical or beach-themed celebrations.',
+  },
+  {
+    id: 'rock-band',
+    title: 'Rock Band',
+    body: 'High-energy, crowd-pleasing performances built to fill the dance floor. Perfect for receptions, birthday parties, and corporate celebrations that want to end on a high note.',
+  },
+];
+---
+
+<BaseLayout title="Music & Ensembles" description="Explore Midwest Music ICT's live music ensembles — string quartet, jazz combo, steel drum band, and rock band — for weddings, corporate events, and celebrations.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Music / Ensembles</p>
+      <h1>Find Your Sound</h1>
+      <p class="section-intro">
+        Every event has its own rhythm. Explore our ensembles below to find the right fit &mdash; or
+        contact us and we&rsquo;ll help you decide.
+      </p>
+    </div>
+  </section>
+
+  {ensembles.map((ensemble, i) => (
+    <section id={ensemble.id} class:list={['section', 'ensemble-section', { 'section--alt': i % 2 === 1 }]}>
+      <div class="container ensemble-section__grid">
+        <div class="ensemble-section__photo card">
+          <!-- TODO: replace with a real photo of this ensemble -->
+          <p>{ensemble.title} photo coming soon</p>
+        </div>
+        <div>
+          <h2>{ensemble.title}</h2>
+          <p class="ensemble-section__body">{ensemble.body}</p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Song List</p>
+      <h2>Have a song in mind?</h2>
+      <p class="section-intro">
+        <!-- TODO: build out a searchable song list / repertoire page once Kim finalizes song lists per ensemble -->
+        A full song list is on the way. In the meantime, reach out with any requests and we&rsquo;ll let
+        you know what we can do.
+      </p>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Not sure which ensemble fits?"
+    heading="Let's find the right sound for your event"
+  />
+</BaseLayout>
+
+<style>
+  .section-intro {
+    max-width: 70ch;
+    color: var(--color-text-muted);
+  }
+
+  .ensemble-section__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 360px) 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .ensemble-section__photo {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .ensemble-section__body {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 720px) {
+    .ensemble-section__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,75 +1,192 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// TODO: replace placeholder email/phone with real contact info once provided.
-// TODO: consider wiring up a real contact form (e.g. Cloudflare Pages Functions
-// or a service like Formspree/Web3Forms) once a submission destination is chosen.
+// TODO: replace placeholder email/phone/service area with real info once provided.
 const contactEmail = 'info@midwestmusicict.com';
 const contactPhone = '(316) 555-0100';
+const serviceArea = 'Wichita, KS and surrounding area';
+
+const eventTypeOptions = ['Wedding', 'Corporate', 'Private Party', 'Other'];
+const ensembleOptions = ['String Quartet', 'Jazz Combo', 'Steel Drum', 'Rock Band', 'Not sure yet'];
 ---
 
-<BaseLayout title="Contact & Booking" description="Reach out to midwestmusicICT to check availability and book live music for your wedding, corporate event, or celebration in the Wichita, Kansas area.">
-  <section class="section contact-hero">
-    <div class="container">
-      <p class="eyebrow">Contact</p>
-      <h1>Let's talk about your event</h1>
-      <p class="contact-hero__body">
-        Share your event date, venue, and what you have in mind, and we'll follow up with lineup and
-        availability options.
-      </p>
+<BaseLayout title="Contact & Booking" description="Reach out to Midwest Music ICT to check availability and book live music for your wedding, corporate event, or celebration in the Wichita, Kansas area.">
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h1>Let&rsquo;s Book Your Event</h1>
+        <p class="contact-intro">
+          Ready to check availability or get a quote? Reach out using the form below, or contact us
+          directly.
+        </p>
 
-      <div class="contact-options grid grid--2">
-        <a class="card contact-option" href={`mailto:${contactEmail}`}>
-          <span class="eyebrow">Email</span>
-          <span class="contact-option__value">{contactEmail}</span>
-        </a>
-        <a class="card contact-option" href={`tel:${contactPhone.replace(/[^\d+]/g, '')}`}>
-          <span class="eyebrow">Call / Text</span>
-          <span class="contact-option__value">{contactPhone}</span>
-        </a>
+        <!--
+          TODO: this form currently opens the visitor's email client with a pre-filled message
+          (no backend required). Once a submission destination is decided, wire this up to a real
+          service instead (e.g. a Cloudflare Pages Function, or a form service like Formspree /
+          Web3Forms) so inquiries land directly in an inbox or CRM.
+        -->
+        <form id="booking-form" class="booking-form">
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="name" required />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" name="phone" />
+          </label>
+          <label class="field">
+            <span>Event date</span>
+            <input type="date" name="eventDate" />
+          </label>
+          <label class="field">
+            <span>Event type</span>
+            <select name="eventType">
+              {eventTypeOptions.map((option) => (
+                <option value={option}>{option}</option>
+              ))}
+            </select>
+          </label>
+          <fieldset class="field field--fieldset">
+            <legend>Preferred ensemble(s)</legend>
+            {ensembleOptions.map((option) => (
+              <label class="checkbox">
+                <input type="checkbox" name="ensembles" value={option} />
+                <span>{option}</span>
+              </label>
+            ))}
+          </fieldset>
+          <label class="field">
+            <span>Message / additional details</span>
+            <textarea name="message" rows="4"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Send Inquiry</button>
+        </form>
       </div>
 
-      <p class="contact-hero__note">
-        <!-- TODO: swap in a real booking form once we've decided how submissions should be handled -->
-        Prefer a form? One is on the way &mdash; for now, email or call/text is the fastest way to reach us.
-      </p>
+      <div class="contact-direct">
+        <div class="card">
+          <p class="eyebrow">Direct Contact</p>
+          <p class="contact-direct__item">
+            <strong>Phone:</strong> <a href={`tel:${contactPhone.replace(/[^\d+]/g, '')}`}>{contactPhone}</a>
+          </p>
+          <p class="contact-direct__item">
+            <strong>Email:</strong> <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+          </p>
+          <p class="contact-direct__item">
+            <strong>Service area:</strong> {serviceArea}
+          </p>
+        </div>
+        <!-- TODO: add a map embed here if a service area or business location should be shown -->
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .contact-hero__body {
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-intro {
     max-width: 60ch;
     color: var(--color-text-muted);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
-  .contact-options {
-    max-width: 640px;
-    margin-bottom: 1.5rem;
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 560px;
   }
 
-  .contact-option {
+  .field {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    text-decoration: none;
-    color: var(--color-text);
-    transition: transform 0.15s ease;
-  }
-
-  .contact-option:hover {
-    transform: translateY(-2px);
-  }
-
-  .contact-option__value {
-    font-size: 1.15rem;
-    font-weight: 600;
-  }
-
-  .contact-hero__note {
-    color: var(--color-text-muted);
     font-size: 0.9rem;
-    max-width: 60ch;
+  }
+
+  .field span,
+  .field--fieldset legend {
+    color: var(--color-text-muted);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    background: var(--color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    color: var(--color-text);
+    font: inherit;
+  }
+
+  .field--fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .checkbox input {
+    width: auto;
+  }
+
+  .contact-direct__item {
+    color: var(--color-text-muted);
+  }
+
+  .contact-direct__item strong {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
+
+<script>
+  const form = document.getElementById('booking-form') as HTMLFormElement | null;
+  const contactEmail = 'info@midwestmusicict.com';
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const ensembles = data.getAll('ensembles').join(', ') || 'Not specified';
+
+    const lines = [
+      `Name: ${data.get('name')}`,
+      `Email: ${data.get('email')}`,
+      `Phone: ${data.get('phone') || 'Not provided'}`,
+      `Event date: ${data.get('eventDate') || 'Not provided'}`,
+      `Event type: ${data.get('eventType')}`,
+      `Preferred ensemble(s): ${ensembles}`,
+      '',
+      `Message: ${data.get('message') || ''}`,
+    ];
+
+    const subject = encodeURIComponent(`Booking Inquiry from ${data.get('name')}`);
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+  });
+</script>

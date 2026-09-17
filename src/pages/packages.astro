@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// TODO: client to confirm actual tiers, ensemble sizes, inclusions, and prices — these are placeholders.
+const tiers = [
+  {
+    name: 'Essentials Package',
+    size: '[Ensemble size / duration]',
+    includes: ['[What\'s included]'],
+    price: '[price]',
+    featured: false,
+  },
+  {
+    name: 'Signature Package',
+    size: '[Ensemble size / duration]',
+    includes: ['[What\'s included]'],
+    price: '[price]',
+    featured: true,
+  },
+  {
+    name: 'Premium Package',
+    size: '[Ensemble size / duration]',
+    includes: ['[What\'s included]'],
+    price: '[price]',
+    featured: false,
+  },
+];
+
+const addOns = [
+  'Ceremony + reception coverage',
+  'Extended hours',
+  'Additional musicians',
+  'Specific song requests',
+];
+---
+
+<BaseLayout title="Packages & Pricing" description="General package tiers for Midwest Music ICT's live music services — final pricing depends on ensemble size, event length, and location.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Packages &amp; Pricing</p>
+      <h1>Packages &amp; Pricing</h1>
+      <p class="section-intro">
+        Below are our general packages to give you a sense of pricing. Every event is different, so
+        final pricing depends on ensemble size, event length, and location &mdash; contact us for an
+        exact quote.
+      </p>
+
+      <div class="grid grid--3 pricing-grid">
+        {tiers.map((tier) => (
+          <div class:list={['card', 'pricing-card', { 'pricing-card--featured': tier.featured }]}>
+            <h3>{tier.name}</h3>
+            <p class="pricing-card__price">Starting at ${tier.price}</p>
+            <ul class="pricing-card__list">
+              <li>{tier.size}</li>
+              {tier.includes.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="add-ons">
+        <p class="eyebrow">Add-ons available</p>
+        <p class="add-ons__list">{addOns.join(' &middot; ')}</p>
+      </div>
+
+      <div class="packages-closing">
+        <p>
+          Prices vary based on event type, location, and musician availability. Contact us for a
+          custom quote tailored to your event.
+        </p>
+        <a class="btn btn--primary" href="/contact/">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-intro {
+    max-width: 70ch;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-grid {
+    margin-bottom: 2.5rem;
+  }
+
+  .add-ons {
+    margin-bottom: 2.5rem;
+  }
+
+  .add-ons__list {
+    color: var(--color-text-muted);
+  }
+
+  .packages-closing {
+    max-width: 60ch;
+  }
+
+  .packages-closing p {
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// TODO: replace placeholder tiles with real client photos, grouped by event type if there's enough volume.
+const photos = [
+  { label: 'Wedding photo coming soon' },
+  { label: 'Wedding photo coming soon' },
+  { label: 'Corporate event photo coming soon' },
+  { label: 'Corporate event photo coming soon' },
+  { label: 'Private party photo coming soon' },
+  { label: 'Private party photo coming soon' },
+];
+---
+
+<BaseLayout title="Gallery" description="See Midwest Music ICT in action — photos from past weddings, corporate events, and private parties.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Gallery</p>
+      <h1>See Us in Action</h1>
+      <p class="section-intro">
+        A showcase of past events &mdash; weddings, parties, and corporate functions featuring our
+        musicians.
+      </p>
+
+      <div class="grid grid--3">
+        {photos.map((photo) => (
+          <button type="button" class="gallery-item" data-caption={photo.label}>
+            <span class="gallery-item__thumb">{photo.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox__content">
+      <button type="button" class="lightbox__close" aria-label="Close">&times;</button>
+      <p id="lightbox-caption"></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .section-intro {
+    max-width: 70ch;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+</style>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const caption = document.getElementById('lightbox-caption');
+  const closeBtn = lightbox?.querySelector('.lightbox__close');
+
+  function openLightbox(text: string) {
+    if (!lightbox || !caption) return;
+    caption.textContent = text;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.gallery-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      openLightbox(item.dataset.caption ?? '');
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeLightbox();
+  });
+</script>

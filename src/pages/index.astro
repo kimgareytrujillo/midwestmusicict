@@ -1,49 +1,83 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CallToAction from '../components/CallToAction.astro';
 
-const eventTypes = [
+const paths = [
   {
     title: 'Weddings',
-    body: 'Ceremony, cocktail hour, and reception music tailored to your day, from a solo percussion + ensemble blend to a full live band.',
+    body: 'Ceremony to reception, live music that matches every moment.',
+    cta: 'Explore Wedding Music',
+    href: '/music/#string-quartet',
   },
   {
     title: 'Corporate Events',
-    body: 'Polished, professional live music for galas, client appreciation events, and company celebrations.',
+    body: 'Polished, professional entertainment for galas, mixers, and conferences.',
+    cta: 'Explore Corporate Options',
+    href: '/event-types/#corporate-events',
   },
   {
-    title: 'Private Parties & Celebrations',
-    body: 'Anniversaries, milestone birthdays, and private gatherings — sized and styled to fit your event.',
+    title: 'Private Parties',
+    body: 'High-energy bands and festive sounds to keep the celebration going.',
+    cta: 'Explore Party Bands',
+    href: '/music/#steel-drum-band',
   },
+];
+
+const ensembles = [
+  {
+    title: 'String Quartets',
+    body: 'Elegant, timeless music for ceremonies and formal events.',
+    href: '/music/#string-quartet',
+  },
+  {
+    title: 'Jazz Combos',
+    body: 'Smooth, sophisticated sound for cocktail hours and dinners.',
+    href: '/music/#jazz-combo',
+  },
+  {
+    title: 'Steel Drum Bands',
+    body: 'Bright, festive energy for outdoor and tropical-themed events.',
+    href: '/music/#steel-drum-band',
+  },
+  {
+    title: 'Rock Bands',
+    body: 'High-energy performances that get the dance floor moving.',
+    href: '/music/#rock-band',
+  },
+];
+
+// TODO: replace with real client quotes once available, or link out to a Google Reviews profile.
+const testimonials = [
+  { quote: 'Testimonial coming soon.', attribution: 'Client name — Event type' },
+  { quote: 'Testimonial coming soon.', attribution: 'Client name — Event type' },
+  { quote: 'Testimonial coming soon.', attribution: 'Client name — Event type' },
 ];
 ---
 
-<BaseLayout title="Live Music for Weddings & Events in Wichita, KS">
+<BaseLayout title="Live Music for Every Occasion">
   <section class="hero section">
     <div class="container hero__inner">
       <p class="eyebrow">Wichita, Kansas &middot; Live Music Booking</p>
-      <h1>Live music that makes your event unforgettable.</h1>
+      <h1>Live Music for Every Occasion</h1>
       <p class="hero__lede">
-        midwestmusicICT is led by professional percussionist <strong>Kim Trujillo</strong>, bringing together
-        top local and regional musicians for weddings, corporate events, private parties, and celebrations
-        across the Wichita area.
+        From intimate weddings to high-energy corporate events, Midwest Music ICT brings the perfect
+        sound to your celebration.
       </p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="/contact/">Check Availability</a>
-        <a class="btn btn--secondary" href="/media/">Watch & Listen</a>
       </div>
     </div>
   </section>
 
   <section class="section section--alt">
     <div class="container">
-      <p class="eyebrow">What We Play</p>
-      <h2>Music for every kind of celebration</h2>
-      <div class="grid grid--3">
-        {eventTypes.map((event) => (
-          <div class="card">
-            <h3>{event.title}</h3>
-            <p>{event.body}</p>
+      <p class="eyebrow">What Are You Planning?</p>
+      <h2>Pick your event type and we&rsquo;ll point you to the right ensembles and packages.</h2>
+      <div class="grid grid--3 path-grid">
+        {paths.map((path) => (
+          <div class="card path-card">
+            <h3>{path.title}</h3>
+            <p>{path.body}</p>
+            <a class="path-card__link" href={path.href}>{path.cta} &rarr;</a>
           </div>
         ))}
       </div>
@@ -51,31 +85,61 @@ const eventTypes = [
   </section>
 
   <section class="section">
-    <div class="container media-teaser">
-      <div>
-        <p class="eyebrow">See &amp; Hear It</p>
-        <h2>Performance videos &amp; recordings</h2>
-        <p>
-          <!-- TODO: replace with real highlight reel copy once media links are provided -->
-          Get a feel for the sound before you book &mdash; browse performance videos and studio recordings
-          from recent weddings and events.
-        </p>
-        <a class="btn btn--primary" href="/media/">View Media</a>
+    <div class="container intro">
+      <p class="eyebrow">One Booking, Every Style</p>
+      <p class="intro__body">
+        Midwest Music ICT connects you with professional live musicians for any event, any vibe.
+        Whether you&rsquo;re picturing a string quartet for your ceremony, a jazz combo for cocktail
+        hour, a steel drum band for a beach-themed party, or a full rock band to close out the night
+        &mdash; we&rsquo;ve got the sound covered.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <p class="eyebrow">Our Ensembles</p>
+      <h2>Find your sound</h2>
+      <div class="grid grid--3">
+        {ensembles.map((ensemble) => (
+          <a class="card ensemble-card" href={ensemble.href}>
+            <h3>{ensemble.title}</h3>
+            <p>{ensemble.body}</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <CallToAction
-    eyebrow="Ready to book?"
-    heading="Let's talk about your event."
-    body="Reach out with your date, venue, and vision — we'll help you build the right lineup and sound for your celebration."
-  />
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">What Our Clients Say</p>
+      <h2>Kind words from past events</h2>
+      <div class="grid grid--3">
+        {testimonials.map((item) => (
+          <div class="card testimonial">
+            <p class="testimonial__quote">&ldquo;{item.quote}&rdquo;</p>
+            <p class="testimonial__attribution">{item.attribution}</p>
+          </div>
+        ))}
+      </div>
+      <!-- TODO: once a Google Business profile exists, consider linking out to the full review list here. -->
+    </div>
+  </section>
+
+  <section class="section section--alt cta-banner">
+    <div class="container cta-banner__inner">
+      <h2>Ready to Book the Perfect Sound for Your Event?</h2>
+      <p>Get in touch today for a free, no-obligation quote.</p>
+      <a class="btn btn--primary" href="/contact/">Contact Us</a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   .hero {
     padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
   }
 
   .hero__inner {
@@ -100,7 +164,47 @@ const eventTypes = [
     margin-top: 1.5rem;
   }
 
-  .media-teaser {
-    max-width: 640px;
+  .path-grid {
+    margin-top: 1.5rem;
+  }
+
+  .path-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .path-card__link {
+    margin-top: auto;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .intro {
+    max-width: 720px;
+  }
+
+  .intro__body {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+  }
+
+  .ensemble-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.15s ease;
+  }
+
+  .ensemble-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .cta-banner {
+    text-align: center;
+  }
+
+  .cta-banner__inner {
+    max-width: 560px;
   }
 </style>
