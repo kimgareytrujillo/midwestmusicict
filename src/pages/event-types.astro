@@ -22,7 +22,7 @@ const eventTypes = [
   {
     id: 'private-parties',
     title: 'Private Parties',
-    body: 'Birthdays, anniversaries, backyard bashes, milestone celebrations — bring the energy with a band built to get people moving.',
+    body: 'Birthdays, anniversaries, backyard bashes, milestone celebrations, kids’ parties, and holiday parties — bring the energy with a band built to get people moving.',
     ensembles: ['Rock Band', 'Steel Drum Band'],
     cta: 'See Party Packages',
     href: '/packages/',
@@ -38,14 +38,15 @@ const eventTypes = [
 ];
 ---
 
-<BaseLayout title="Event Types" description="Midwest Music ICT matches the right live music ensemble to your event — weddings, corporate events, private parties, and outdoor or themed celebrations.">
+<BaseLayout title="Event Types" description="MidwestMusicICT matches the right live music ensemble to your event — weddings, corporate events, private parties, and outdoor or themed celebrations.">
   <section class="section">
     <div class="container">
       <p class="eyebrow">Event Types</p>
       <h1>Music for Every Kind of Event</h1>
       <p class="section-intro">
-        No matter what you&rsquo;re planning, we&rsquo;ll match you with the right ensemble and sound.
-        Explore event types below, or contact us if you don&rsquo;t see yours.
+        Not sure which style of music or ensemble fits your event? Start here &mdash; each event type
+        below points you to the ensembles, sound, and photos/videos that fit it best. Explore below,
+        or contact us if you don&rsquo;t see yours.
       </p>
     </div>
   </section>
@@ -54,8 +55,8 @@ const eventTypes = [
     <section id={event.id} class:list={['section', { 'section--alt': i % 2 === 1 }]}>
       <div class="container event-type-grid">
         <div class="event-type-photo card">
-          <!-- TODO: replace with a real photo for this event type -->
-          <p>{event.title} photo coming soon</p>
+          <!-- TODO: replace with real photos/video clips for this event type -->
+          <p>{event.title} photo/video coming soon</p>
         </div>
         <div>
           <h2>{event.title}</h2>

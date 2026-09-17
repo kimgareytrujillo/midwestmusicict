@@ -1,6 +1,6 @@
-# Midwest Music ICT
+# MidwestMusicICT
 
-Website for **Midwest Music ICT**, Kim Trujillo's live music booking business based in the Wichita, KS
+Website for **MidwestMusicICT**, Kim Trujillo's live music booking business based in the Wichita, KS
 area. Built with [Astro](https://astro.build) as a static site.
 
 ## Pages

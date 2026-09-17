@@ -11,14 +11,19 @@ Search the codebase for `TODO` comments to find the exact spots.
 - [ ] Social media links (`src/components/SiteFooter.astro`)
 - [ ] Testimonials, or a Google Business review link (`src/pages/index.astro`)
 - [ ] Final photo selects, sorted by ensemble/event type
+- [ ] Kim's real personal bio for the About page "Meet the Founder" section (`src/pages/about.astro`)
 
-## Photos needed
+## Photos/media needed
+
+There's no separate media page by design — photos and video should be incorporated throughout the
+site, especially the Event Types page, so it can help visitors match a style/ensemble to their event.
 
 - [ ] Hero photo — high-energy live performance shot (Home)
-- [ ] Founder/team photo (About)
-- [ ] One photo per ensemble: String Quartet, Jazz Combo, Steel Drum Band, Rock Band (Music page)
-- [ ] One photo per event type: Weddings, Corporate, Private Parties, Outdoor & Themed (Event Types page)
+- [ ] Founder photo of Kim Trujillo (About, "Meet the Founder" section)
+- [ ] One photo/video clip per ensemble: String Quartet, Jazz Combo, Steel Drum Band, Rock Band (Music page)
+- [ ] One photo/video clip per event type: Weddings, Corporate, Private Parties, Outdoor & Themed (Event Types page)
 - [ ] Gallery photos, grouped by event type if there's enough volume
+- [ ] Real logo (primary mark + wide header lockup) — see placeholders on the Home page and in the header
 
 ## Functionality decisions still open
 

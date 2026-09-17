@@ -13,7 +13,14 @@ const currentPath = Astro.url.pathname;
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-header__brand" href="/">Midwest <span>Music</span> ICT</a>
+    <a class="site-header__brand" href="/" aria-label="MidwestMusicICT — home">
+      <span class="logo-placeholder site-header__logo">
+        <span>
+          <strong>MidwestMusicICT</strong>
+          <small>Wide lockup — placeholder</small>
+        </span>
+      </span>
+    </a>
     <nav class="site-header__nav" aria-label="Main navigation">
       {navItems.map((item) => (
         <a
@@ -47,15 +54,15 @@ const currentPath = Astro.url.pathname;
   }
 
   .site-header__brand {
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    color: var(--color-text);
     text-decoration: none;
     white-space: nowrap;
   }
 
-  .site-header__brand span {
-    color: var(--color-accent);
+  .site-header__logo {
+    width: 220px;
+    aspect-ratio: 3.4 / 1;
+    padding: 0.4rem 0.75rem;
+    font-size: 1.05rem;
   }
 
   .site-header__nav {

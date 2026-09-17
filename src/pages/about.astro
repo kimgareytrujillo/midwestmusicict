@@ -9,18 +9,18 @@ const reasons = [
 ];
 ---
 
-<BaseLayout title="About" description="Midwest Music ICT connects you with a network of professional musicians for weddings, corporate events, and private celebrations.">
+<BaseLayout title="About" description="MidwestMusicICT connects you with a network of professional musicians for weddings, corporate events, and private celebrations.">
   <section class="section about-hero">
     <div class="container about-hero__grid">
       <div class="about-hero__photo card">
-        <!-- TODO: replace with a real founder/team photo once available -->
-        <p class="about-hero__photo-placeholder">Photo of Kim Trujillo, Founder, coming soon</p>
+        <!-- TODO: replace with a real performance/ensemble photo once available -->
+        <p class="about-hero__photo-placeholder">Photo coming soon</p>
       </div>
       <div>
         <p class="eyebrow">About</p>
-        <h1>About Midwest Music ICT</h1>
+        <h1>About MidwestMusicICT</h1>
         <p class="about-hero__body">
-          Midwest Music ICT was built on a simple idea: every event deserves music that fits. We work
+          MidwestMusicICT was built on a simple idea: every event deserves music that fits. We work
           with a network of skilled, professional musicians across a range of styles, so you&rsquo;re
           not stuck choosing between &ldquo;the DJ&rdquo; and &ldquo;the band&rdquo; &mdash; you get
           exactly the sound your event calls for, handled by people who do this for a living.
@@ -41,6 +41,25 @@ const reasons = [
           <li>{reason}</li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <section class="section founder">
+    <div class="container founder__grid">
+      <div class="founder__photo card">
+        <!-- TODO: replace with a real photo of Kim once available -->
+        <p class="founder__photo-placeholder">Photo of Kim Trujillo, Founder, coming soon</p>
+      </div>
+      <div>
+        <p class="eyebrow">Meet the Founder</p>
+        <h2>Kim Trujillo</h2>
+        <!-- TODO: replace with Kim's real personal bio -->
+        <p class="founder__body">
+          Kim&rsquo;s personal bio is coming soon &mdash; her background in music, how
+          MidwestMusicICT got started, and what drives her to connect clients with the right sound
+          for their event.
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -79,6 +98,33 @@ const reasons = [
 
   @media (max-width: 720px) {
     .about-hero__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .founder__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .founder__photo {
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .founder__body {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 720px) {
+    .founder__grid {
       grid-template-columns: 1fr;
     }
   }

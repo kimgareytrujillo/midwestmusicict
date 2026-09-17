@@ -56,14 +56,37 @@ const testimonials = [
 <BaseLayout title="Live Music for Every Occasion">
   <section class="hero section">
     <div class="container hero__inner">
-      <p class="eyebrow">Wichita, Kansas &middot; Live Music Booking</p>
+      <p class="eyebrow">Wichita, Kansas and surrounding areas &middot; Live Music Booking</p>
       <h1>Live Music for Every Occasion</h1>
       <p class="hero__lede">
-        From intimate weddings to high-energy corporate events, Midwest Music ICT brings the perfect
+        From intimate weddings to high-energy corporate events, MidwestMusicICT brings the perfect
         sound to your celebration.
       </p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="/contact/">Check Availability</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section brand-preview">
+    <div class="container brand-preview__inner">
+      <p class="eyebrow">Brand (In Progress)</p>
+      <p class="brand-preview__note">
+        Logo design is underway — these are placeholders standing in for the real marks.
+      </p>
+      <div class="brand-preview__grid">
+        <span class="logo-placeholder brand-preview__mark">
+          <span>
+            <strong>MMI</strong>
+            <small>Primary logomark — placeholder</small>
+          </span>
+        </span>
+        <span class="logo-placeholder brand-preview__lockup">
+          <span>
+            <strong>MidwestMusicICT</strong>
+            <small>Wide lockup — placeholder</small>
+          </span>
+        </span>
       </div>
     </div>
   </section>
@@ -86,9 +109,9 @@ const testimonials = [
 
   <section class="section">
     <div class="container intro">
-      <p class="eyebrow">One Booking, Every Style</p>
+      <h2>Music for every event</h2>
       <p class="intro__body">
-        Midwest Music ICT connects you with professional live musicians for any event, any vibe.
+        MidwestMusicICT connects you with professional live musicians for any event, any vibe.
         Whether you&rsquo;re picturing a string quartet for your ceremony, a jazz combo for cocktail
         hour, a steel drum band for a beach-themed party, or a full rock band to close out the night
         &mdash; we&rsquo;ve got the sound covered.
@@ -162,6 +185,29 @@ const testimonials = [
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1.5rem;
+  }
+
+  .brand-preview__note {
+    color: var(--color-text-muted);
+    max-width: 60ch;
+  }
+
+  .brand-preview__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .brand-preview__mark {
+    width: 140px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .brand-preview__lockup {
+    width: 320px;
+    aspect-ratio: 3.4 / 1;
   }
 
   .path-grid {
