@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+---
+
+<BaseLayout title="About Kim Trujillo & midwestmusicICT" description="Meet Kim Trujillo, professional percussionist and founder of midwestmusicICT, and the network of Wichita-area musicians she books for live events.">
+  <section class="section about-hero">
+    <div class="container about-hero__grid">
+      <div class="about-hero__photo card">
+        <!-- TODO: replace with a real photo of Kim performing -->
+        <p class="about-hero__photo-placeholder">Photo of Kim coming soon</p>
+      </div>
+      <div>
+        <p class="eyebrow">About</p>
+        <h1>Kim Trujillo</h1>
+        <p class="about-hero__body">
+          <!-- TODO: replace with Kim's real bio once the detail doc arrives -->
+          Kim Trujillo is a professional percussionist based in the Wichita area with years of experience
+          performing at weddings, corporate functions, and private celebrations throughout the region.
+          midwestmusicICT grew out of that experience: a trusted network of local and regional musicians
+          Kim calls on to build the right lineup for every event, from an intimate acoustic duo to a
+          full live band.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <p class="eyebrow">The Musicians</p>
+      <h2>A network built for every occasion</h2>
+      <p class="section-intro">
+        <!-- TODO: expand with real musician bios / instrumentation once provided -->
+        Depending on your event, Kim assembles the right combination of local and regional musicians &mdash;
+        percussion, strings, horns, vocals, and more &mdash; so every performance is tailored to your venue,
+        your guest count, and the mood you want to set.
+      </p>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Let's work together"
+    heading="Tell us about your event"
+    body="Share your date and vision and we'll help put together the right musicians for it."
+  />
+</BaseLayout>
+
+<style>
+  .about-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .about-hero__photo {
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .about-hero__body {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+  }
+
+  .section-intro {
+    max-width: 70ch;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 720px) {
+    .about-hero__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// TODO: replace placeholder email/phone with real contact info once provided.
+// TODO: consider wiring up a real contact form (e.g. Cloudflare Pages Functions
+// or a service like Formspree/Web3Forms) once a submission destination is chosen.
+const contactEmail = 'info@midwestmusicict.com';
+const contactPhone = '(316) 555-0100';
+---
+
+<BaseLayout title="Contact & Booking" description="Reach out to midwestmusicICT to check availability and book live music for your wedding, corporate event, or celebration in the Wichita, Kansas area.">
+  <section class="section contact-hero">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Let's talk about your event</h1>
+      <p class="contact-hero__body">
+        Share your event date, venue, and what you have in mind, and we'll follow up with lineup and
+        availability options.
+      </p>
+
+      <div class="contact-options grid grid--2">
+        <a class="card contact-option" href={`mailto:${contactEmail}`}>
+          <span class="eyebrow">Email</span>
+          <span class="contact-option__value">{contactEmail}</span>
+        </a>
+        <a class="card contact-option" href={`tel:${contactPhone.replace(/[^\d+]/g, '')}`}>
+          <span class="eyebrow">Call / Text</span>
+          <span class="contact-option__value">{contactPhone}</span>
+        </a>
+      </div>
+
+      <p class="contact-hero__note">
+        <!-- TODO: swap in a real booking form once we've decided how submissions should be handled -->
+        Prefer a form? One is on the way &mdash; for now, email or call/text is the fastest way to reach us.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-hero__body {
+    max-width: 60ch;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-options {
+    max-width: 640px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform 0.15s ease;
+  }
+
+  .contact-option:hover {
+    transform: translateY(-2px);
+  }
+
+  .contact-option__value {
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .contact-hero__note {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    max-width: 60ch;
+  }
+</style>

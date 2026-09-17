@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// TODO: replace placeholders with real hosted video/audio once links are provided.
+// Example YouTube embed once a real video ID is available:
+// <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="..." allowfullscreen></iframe>
+const videoPlaceholders = [
+  { title: 'Wedding Reception Highlight', note: 'Video coming soon' },
+  { title: 'Corporate Gala Performance', note: 'Video coming soon' },
+  { title: 'Live Percussion Feature', note: 'Video coming soon' },
+];
+
+const audioPlaceholders = [
+  { title: 'Studio Recording — Track 1', note: 'Audio coming soon' },
+  { title: 'Studio Recording — Track 2', note: 'Audio coming soon' },
+];
+---
+
+<BaseLayout title="Media" description="Watch performance videos and listen to recordings from midwestmusicICT, Kim Trujillo's Wichita-area live music ensemble.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Media</p>
+      <h1>Watch &amp; listen</h1>
+      <p class="section-intro">
+        Get a feel for the sound before you book. Video and audio from recent performances will live here.
+      </p>
+
+      <h2 class="media-heading">Performance Videos</h2>
+      <div class="grid grid--3">
+        {videoPlaceholders.map((item) => (
+          <div class="card media-card">
+            <div class="media-card__frame">{item.note}</div>
+            <h3>{item.title}</h3>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="media-heading">Recordings</h2>
+      <div class="grid grid--2">
+        {audioPlaceholders.map((item) => (
+          <div class="card media-card">
+            <div class="media-card__frame media-card__frame--audio">{item.note}</div>
+            <h3>{item.title}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Like what you hear?"
+    heading="Let's book your event"
+  />
+</BaseLayout>
+
+<style>
+  .section-intro {
+    max-width: 70ch;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .media-heading {
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .media-heading:first-of-type {
+    margin-top: 0;
+  }
+
+  .media-card__frame {
+    aspect-ratio: 16 / 9;
+    background: var(--color-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .media-card__frame--audio {
+    aspect-ratio: auto;
+    height: 80px;
+  }
+</style>

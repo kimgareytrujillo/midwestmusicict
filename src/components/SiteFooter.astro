@@ -1,0 +1,75 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      <p class="site-footer__brand">midwest<span>music</span>ICT</p>
+      <p class="site-footer__tagline">Live music for weddings, corporate events &amp; celebrations across the Wichita area.</p>
+    </div>
+    <div class="site-footer__links">
+      <a href="/contact/">Book Now</a>
+      <a href="/media/">Listen &amp; Watch</a>
+      <!-- TODO: swap in real social links once provided -->
+      <a href="mailto:info@midwestmusicict.com">info@midwestmusicict.com</a>
+    </div>
+  </div>
+  <div class="container">
+    <p class="site-footer__copy">&copy; {year} midwestmusicICT &mdash; Kim Trujillo. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-bg-alt);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .site-footer__brand {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .site-footer__brand span {
+    color: var(--color-accent);
+  }
+
+  .site-footer__tagline {
+    color: var(--color-text-muted);
+    max-width: 32ch;
+    margin-bottom: 0;
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .site-footer__links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .site-footer__links a:hover {
+    color: var(--color-accent);
+  }
+
+  .site-footer__copy {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+</style>

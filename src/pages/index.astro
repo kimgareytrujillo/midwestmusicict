@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const eventTypes = [
+  {
+    title: 'Weddings',
+    body: 'Ceremony, cocktail hour, and reception music tailored to your day, from a solo percussion + ensemble blend to a full live band.',
+  },
+  {
+    title: 'Corporate Events',
+    body: 'Polished, professional live music for galas, client appreciation events, and company celebrations.',
+  },
+  {
+    title: 'Private Parties & Celebrations',
+    body: 'Anniversaries, milestone birthdays, and private gatherings — sized and styled to fit your event.',
+  },
+];
+---
+
+<BaseLayout title="Live Music for Weddings & Events in Wichita, KS">
+  <section class="hero section">
+    <div class="container hero__inner">
+      <p class="eyebrow">Wichita, Kansas &middot; Live Music Booking</p>
+      <h1>Live music that makes your event unforgettable.</h1>
+      <p class="hero__lede">
+        midwestmusicICT is led by professional percussionist <strong>Kim Trujillo</strong>, bringing together
+        top local and regional musicians for weddings, corporate events, private parties, and celebrations
+        across the Wichita area.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/contact/">Check Availability</a>
+        <a class="btn btn--secondary" href="/media/">Watch & Listen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <p class="eyebrow">What We Play</p>
+      <h2>Music for every kind of celebration</h2>
+      <div class="grid grid--3">
+        {eventTypes.map((event) => (
+          <div class="card">
+            <h3>{event.title}</h3>
+            <p>{event.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container media-teaser">
+      <div>
+        <p class="eyebrow">See &amp; Hear It</p>
+        <h2>Performance videos &amp; recordings</h2>
+        <p>
+          <!-- TODO: replace with real highlight reel copy once media links are provided -->
+          Get a feel for the sound before you book &mdash; browse performance videos and studio recordings
+          from recent weddings and events.
+        </p>
+        <a class="btn btn--primary" href="/media/">View Media</a>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Ready to book?"
+    heading="Let's talk about your event."
+    body="Reach out with your date, venue, and vision — we'll help you build the right lineup and sound for your celebration."
+  />
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-top: 0.5rem;
+  }
+
+  .hero__lede {
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    max-width: 60ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .media-teaser {
+    max-width: 640px;
+  }
+</style>
